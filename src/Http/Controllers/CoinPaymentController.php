@@ -43,7 +43,7 @@ class CoinPaymentController extends Controller {
       foreach($rates as $i => $coin){
 
         if((INT) $coin['is_fiat'] === 0){
-          $rate = $rates[$i]['rate_btc'] === 0 ? 0 : ($rateAmount / $rates[$i]['rate_btc']);
+          $rate = $rates[$i]['rate_btc'] == 0 ? 0 : ($rateAmount / $rates[$i]['rate_btc']);
           $coins[] = [
             'name' => $coin['name'],
             'rate' => number_format($rate,8,'.',''),
@@ -57,7 +57,7 @@ class CoinPaymentController extends Controller {
         }
 
         if((INT) $coin['is_fiat'] === 0 && $coin['accepted'] == 1){
-          $rate = $rates[$i]['rate_btc'] === 0 ? 0 : ($rateAmount / $rates[$i]['rate_btc']);
+          $rate = $rates[$i]['rate_btc'] == 0 ? 0 : ($rateAmount / $rates[$i]['rate_btc']);
           $coins_accept[] = [
             'name' => $coin['name'],
             'rate' => number_format($rate,8,'.',''),
